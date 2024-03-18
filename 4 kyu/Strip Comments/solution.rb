@@ -20,11 +20,11 @@
 # result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
 # result should == "apples, pears\ngrapes\nbananas"
 
-# @param [String] input
-# @param [Array<String>] markers
-def solution(input, markers)
-  input.gsub(/(\s+[#{markers.join}].*)/, '')
+class Solution
+  def solution(input, markers)
+    input.gsub(/(\s+[#{markers.join}].*)/, '')
+  end
 end
 
-result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", %w[# !])
+result = Solution.new.solution("apples, pears # and bananas\ngrapes\nbananas !apples", %w[# !])
 p result == "apples, pears\ngrapes\nbananas"

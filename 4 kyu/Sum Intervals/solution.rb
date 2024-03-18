@@ -48,20 +48,22 @@
 # Your algorithm should be able to handle large intervals.
 # All tested intervals are subsets of the range [-1000000000, 1000000000].
 
-def sum_of_intervals(intervals)
-  return 0 unless intervals.is_a?(Array) && !intervals.empty?
+class Solution
+  def sum_of_intervals(intervals)
+    return 0 unless intervals.is_a?(Array) && !intervals.empty?
 
-  sorted_intervals = intervals.sort_by(&:first)
-  merged_intervals = merge_intervals(sorted_intervals)
-  merged_intervals.sum { |start, finish| finish - start }
-end
+    sorted_intervals = intervals.sort_by(&:first)
+    merged_intervals = merge_intervals(sorted_intervals)
+    merged_intervals.sum { |start, finish| finish - start }
+  end
 
-def merge_intervals(intervals)
-  intervals.each_with_object([]) do |current_interval, merged|
-    if merged.empty? || current_interval.first > merged.last.last
-      merged << current_interval
-    else
-      merged.last[1] = [merged.last.last, current_interval.last].max
+  def merge_intervals(intervals)
+    intervals.each_with_object([]) do |current_interval, merged|
+      if merged.empty? || current_interval.first > merged.last.last
+        merged << current_interval
+      else
+        merged.last[1] = [merged.last.last, current_interval.last].max
+      end
     end
   end
 end

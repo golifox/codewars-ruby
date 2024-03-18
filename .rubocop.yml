@@ -4,6 +4,15 @@ require:
 AllCops:
   NewCops: enable
   SuggestExtensions: false
+  Exclude:
+    - '*/**/benchmark.rb'
+    - '*/**/best_codewars_solution.rb'
 
 Style/Documentation:
   Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 40
